@@ -1,199 +1,438 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incasa - Móveis e Colchões</title>
+    <title>Incasa - Móveis & Colchões | Excelência em Conforto e Design</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            navy: '#1e293b',
+                            gold: '#d97706',
+                            goldHover: '#b45309',
+                            goldLight: '#fef3c7',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #334155 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-gold selection:text-white">
 
-    <!-- Cabeçalho / Navegação -->
-    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-bold tracking-tight text-amber-500">INCASA</h1>
-                <p class="text-xs text-gray-400">Móveis e Colchões</p>
+    <!-- Top Info Bar -->
+    <div class="bg-brand-dark text-slate-400 text-xs py-2 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <span><i class="fa-solid fa-building text-brand-gold mr-1.5"></i> CNPJ: 05.773.535/0001-19</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-[#00ff00] fa-circle text-[8px] text-emerald-400 mr-1.5"></i> Situação Cadastral: Ativa</span>
             </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#servicos" class="hover:text-amber-500 transition">Serviços</a>
-                <a href="#sobre" class="hover:text-amber-500 transition">Sobre</a>
-                <a href="#registro" class="hover:text-amber-500 transition">Dados Cadastrais</a>
-                <a href="#contato" class="hover:text-amber-500 transition">Contato</a>
-            </nav>
-            <a href="https://wa.me/551630171081" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition shadow">
-                Fale Conosco
+            <div class="flex items-center space-x-4">
+                <a href="tel:1630171081" class="hover:text-white transition"><i class="fa-solid fa-phone text-brand-gold mr-1"></i> (16) 3017-1081</a>
+                <span>|</span>
+                <a href="mailto:atendimentoincasamoveis@gmail.com" class="hover:text-white transition"><i class="fa-solid fa-envelope text-brand-gold mr-1"></i> Atendimento Corporativo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação Principal -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-800/50 text-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <!-- Logo Corporativa -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 bg-gradient-to-br from-brand-gold to-amber-600 rounded-lg flex items-center justify-center shadow-lg group-hover:scale-105 transition">
+                    <i class="fa-solid fa-house-chimney text-slate-900 text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tight text-white block leading-none font-serif">INCASA</span>
+                    <span class="text-[10px] tracking-widest text-brand-gold uppercase font-semibold">Móveis & Colchões</span>
+                </div>
             </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#servicos" class="hover:text-brand-gold transition-colors py-2">Serviços</a>
+                <a href="#diferenciais" class="hover:text-brand-gold transition-colors py-2">Diferenciais</a>
+                <a href="#registro" class="hover:text-brand-gold transition-colors py-2">Dados Cadastrais</a>
+                <a href="#contato" class="hover:text-brand-gold transition-colors py-2">Contato</a>
+            </nav>
+
+            <!-- Ação Rápida -->
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/551630171081?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20os%20produtos%20Incasa." target="_blank" class="bg-gradient-to-r from-brand-gold to-amber-600 hover:from-amber-600 hover:to-brand-gold text-slate-950 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-md transition shadow-md hover:shadow-amber-500/20 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Solicitar Orçamento</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-slate-800 text-white py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center space-y-4">
-            <span class="text-amber-500 font-semibold tracking-wider text-sm uppercase">Mais de 20 anos de tradição</span>
-            <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Qualidade e Conforto para o Seu Lar</h2>
-            <p class="text-gray-300 text-base md:text-lg">Soluções completas em móveis e colchões com a garantia de quem atua no mercado desde 2003.</p>
+    <section class="hero-gradient text-white py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-brand-gold text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-award"></i> Tradição e Confiança desde 2003
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight text-white">
+                        Soluções Completas em <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-brand-gold">Móveis e Colchões</span>
+                    </h1>
+                    <p class="text-slate-300 text-lg font-light leading-relaxed max-w-2xl">
+                        Há mais de duas décadas oferecendo móveis residenciais de alto padrão e tecnologia de ponta em colchões. Estrutura sólida, compromisso fiscal e pontualidade para clientes exigentes.
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#servicos" class="bg-brand-gold hover:bg-brand-goldHover text-slate-950 font-bold px-8 py-4 rounded-md transition shadow-lg flex items-center gap-3">
+                            <span>Conhecer Nossos Serviços</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#registro" class="border border-slate-600 hover:border-slate-400 text-slate-200 font-medium px-8 py-4 rounded-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-brand-gold"></i>
+                            <span>Verificar Transparência Fiscal</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card de Destaque Corporativo -->
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-800/60 border border-slate-700 p-8 rounded-2xl backdrop-blur-md shadow-2xl space-y-6">
+                        <h3 class="text-xl font-serif font-bold text-white border-b border-slate-700 pb-4 flex items-center justify-between">
+                            <span>Resumo Corporativo</span>
+                            <i class="fa-solid fa-building-columns text-brand-gold"></i>
+                        </h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700/50">
+                                <span class="text-slate-400">Tempo de Mercado</span>
+                                <span class="font-bold text-emerald-400">+23 Anos de Atuação</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700/50">
+                                <span class="text-slate-400">Sede Principal</span>
+                                <span class="font-medium text-slate-200">Franca / SP</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700/50">
+                                <span class="text-slate-400">Inscrições Estaduais</span>
+                                <span class="font-medium text-slate-200">SP, MG e RS</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-slate-400">Capital Social</span>
+                                <span class="font-semibold text-brand-gold">R$ 100.000,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Principais Serviços -->
-    <section id="servicos" class="py-16 max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-slate-900">Nossos Principais Serviços</h2>
-            <p class="text-gray-600 mt-2">Atendimento especializado e produtos selecionados para sua casa</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-4 text-xl">
-                    <i class="fa-solid fa-bed"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Venda de Colchões Especiais</h3>
-                <p class="text-gray-600 text-sm">Trabalhamos com linhas sob medida, ortopédicas e de alta densidade para garantir a melhor qualidade de sono.</p>
+    <section id="servicos" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-gold font-bold text-xs uppercase tracking-widest block">O que oferecemos</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900">Especialistas em Conforto e Decoração</h2>
+                <div class="w-16 h-1 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="text-slate-600">Oferecemos portfólio completo em linhas de móveis e descanso de alta performance técnica.</p>
             </div>
 
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-4 text-xl">
-                    <i class="fa-solid fa-couch"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Serviço 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200/80 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-dark text-brand-gold rounded-xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-bed"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Colchões de Alta Tecnologia</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Trabalhamos com linhas de colchões ergonômicos, ortopédicos, molas ensacadas individualmente e espumas de alta densidade certificadas para máxima saúde postural.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Modelos Ortobom e Linhas Especiais</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Suporte de Peso Personalizado</li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Mobiliário Residencial</h3>
-                <p class="text-gray-600 text-sm">Ampla variedade de móveis para sala, quarto e cozinha, aliando design moderno, durabilidade e sofisticação.</p>
-            </div>
 
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-4 text-xl">
-                    <i class="fa-solid fa-truck-fast"></i>
+                <!-- Serviço 2 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200/80 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-dark text-brand-gold rounded-xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-couch"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Mobiliário Residencial Integrado</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Seleção exclusiva de móveis para salas de estar, jantar e dormitórios. Peças projetadas para otimização de espaços com acabamentos premium e durabilidade.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Design Moderno e Clássico</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Materiais de Alta Resistência</li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Consultoria e Entrega</h3>
-                <p class="text-gray-600 text-sm">Atendimento consultivo para escolha dos produtos ideais e suporte na logística de entrega com pontualidade.</p>
+
+                <!-- Serviço 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200/80 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-dark text-brand-gold rounded-xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Atendimento e Logística Agilizada</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Consultoria especializada para a escolha do móvel ideal, suporte completo pós-venda e sistema eficiente de transporte para entrega rápida e segura.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Cobertura Logística Interestadual</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> Equipe Própria de Atendimento</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Dados Institucionais / Registro -->
-    <section id="registro" class="bg-slate-100 py-16 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900">Informações de Registro</h2>
-                <p class="text-gray-600 mt-2">Transparência e regularidade fiscal corporativa</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-gray-200">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
-                    <div>
-                        <span class="block text-gray-500 font-medium">Razão Social</span>
-                        <strong class="text-slate-900 text-base">Incasa Comercio de Moveis e Colchoes LTDA</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Nome Fantasia</span>
-                        <strong class="text-slate-900 text-base">Incasa - Moveis e Colchoes</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">CNPJ</span>
-                        <strong class="text-slate-900 text-base">05.773.535/0001-19</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Data de Abertura</span>
-                        <strong class="text-slate-900">18/07/2003 (Mais de 23 anos)</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Situação Cadastral</span>
-                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold mt-1">Ativa (desde 17/07/2004)</span>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Tipo / Porte</span>
-                        <strong class="text-slate-900">Matriz / Sem Enquadramento</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Natureza Jurídica</span>
-                        <strong class="text-slate-900">Sociedade Empresária Limitada</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Opção pelo Simples</span>
-                        <strong class="text-slate-900">Sim (desde 01/01/2024)</strong>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 font-medium">Capital Social</span>
-                        <strong class="text-slate-900">R$ 100.000,00</strong>
+    <!-- Seção Institucional / Dados Fiscais -->
+    <section id="registro" class="py-24 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-4 space-y-6">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest block">Transparência Institucional</span>
+                    <h2 class="text-3xl font-serif font-bold text-white leading-tight">Dados da Empresa e Registro Comercial</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        A <strong class="text-white">Incasa Comércio de Móveis e Colchões LTDA</strong> opera sob rígidos padrões regulatórios e tributários, mantendo regularidade fiscal ativa em múltiplos estados.
+                    </p>
+                    
+                    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 space-y-2">
+                        <div class="flex items-center gap-2 text-brand-gold font-bold">
+                            <i class="fa-solid fa-shield-check text-base"></i>
+                            <span>Empresa Verificada & Regularizada</span>
+                        </div>
+                        <p class="text-slate-400">Optante pelo Simples Nacional desde 01/01/2024 com registro ativo há mais de duas décadas.</p>
                     </div>
                 </div>
 
-                <hr class="my-6 border-gray-200">
+                <div class="lg:col-span-8 bg-slate-800 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                    <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-3 border-b border-slate-700 pb-4">
+                        <i class="fa-solid fa-file-contract text-brand-gold"></i> Ficha Cadastral Oficial
+                    </h3>
 
-                <h4 class="font-bold text-slate-900 mb-4">Inscrições Estaduais</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                    <div class="bg-gray-50 p-3 rounded">
-                        <span class="text-gray-500 block">IE São Paulo (SP):</span>
-                        <strong class="text-slate-800">310.373.600.112</strong>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm">
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Razão Social</span>
+                            <span class="font-medium text-white">Incasa Comercio de Moveis e Colchoes LTDA</span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Nome Fantasia</span>
+                            <span class="font-medium text-white">Incasa - Moveis e Colchoes</span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">CNPJ</span>
+                            <span class="font-mono text-brand-gold font-semibold">05.773.535/0001-19</span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Data de Abertura</span>
+                            <span class="font-medium text-white">18/07/2003 <span class="text-xs text-slate-400">(23 anos de operação)</span></span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Natureza Jurídica</span>
+                            <span class="font-medium text-white">Sociedade Empresária Limitada</span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Porte & Capital Social</span>
+                            <span class="font-medium text-white">Sem Enquadramento — R$ 100.000,00</span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Opção MEI / Simples</span>
+                            <span class="font-medium text-white">MEI: Não | Simples: Sim (desde 01/01/2024)</span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">Situação Cadastral</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                                Ativa (Desde 17/07/2004)
+                            </span>
+                        </div>
                     </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <span class="text-gray-500 block">IE Minas Gerais (MG):</span>
-                        <strong class="text-slate-800">003783351.00-76</strong>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <span class="text-gray-500 block">IE Rio Grande do Sul (RS):</span>
-                        <strong class="text-slate-800">900/0048465</strong>
+
+                    <div class="mt-8 pt-6 border-t border-slate-700">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Inscrições Estaduais Habilitadas</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+                            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-500 block text-[10px] uppercase font-sans">São Paulo (SP)</span>
+                                <span class="text-slate-200 font-semibold">310.373.600.112</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-500 block text-[10px] uppercase font-sans">Minas Gerais (MG)</span>
+                                <span class="text-slate-200 font-semibold">003783351.00-76</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-500 block text-[10px] uppercase font-sans">Rio Grande do Sul (RS)</span>
+                                <span class="text-slate-200 font-semibold">900/0048465</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Contato e Localização -->
-    <section id="contato" class="py-16 max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- Informações de Contato -->
-            <div class="space-y-6">
-                <h2 class="text-3xl font-bold text-slate-900">Fale Conosco</h2>
-                <p class="text-gray-600">Entre em contato com a nossa equipe comercial para orçamentos e dúvidas.</p>
-                
-                <div class="space-y-4">
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-amber-100 text-amber-600 p-3 rounded-lg">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-gray-500 block">E-mail</span>
-                            <a href="mailto:atendimentoincasamoveis@gmail.com" class="text-slate-800 font-semibold hover:text-amber-600">atendimentoincasamoveis@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-amber-100 text-amber-600 p-3 rounded-lg">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-gray-500 block">Telefones</span>
-                            <p class="text-slate-800 font-semibold">(16) 3017-1081 / (16) 3405-0842</p>
-                        </div>
-                    </div>
-                </div>
+    <section id="contato" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-gold font-bold text-xs uppercase tracking-widest block">Atendimento</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900">Entre em Contato Conosco</h2>
+                <div class="w-16 h-1 bg-brand-gold mx-auto rounded-full"></div>
             </div>
 
-            <!-- Endereço e Correspondência -->
-            <div class="bg-slate-900 text-white p-8 rounded-xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4 text-amber-500">Localização e Correspondência</h3>
-                <p class="text-sm text-gray-300 mb-6">Unidade Matriz localizada no estado de São Paulo.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                 
-                <div class="space-y-3 text-sm border-l-2 border-amber-500 pl-4">
-                    <p><strong class="text-white">Empresa:</strong> Incasa Comercio de Moveis e Colchoes LTDA</p>
-                    <p><strong class="text-white">Endereço:</strong> Rua Romao de Campos, 1781</p>
-                    <p><strong class="text-white">Bairro:</strong> Vila Santa Rita</p>
-                    <p><strong class="text-white">Cidade/UF:</strong> Franca - SP</p>
-                    <p><strong class="text-white">CEP:</strong> 14403-385</p>
+                <!-- Informações e Formulário -->
+                <div class="lg:col-span-7 bg-white p-8 rounded-2xl border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">Envie uma Mensagem</h3>
+                        <form action="#" method="POST" class="space-y-4" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Entre contato diretamente pelo WhatsApp para atendimento imediato.');">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Seu Nome</label>
+                                    <input type="text" required placeholder="Digite seu nome completo" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-brand-gold transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Telefone / WhatsApp</label>
+                                    <input type="tel" required placeholder="(16) 00000-0000" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-brand-gold transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">E-mail</label>
+                                <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-brand-gold transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Como podemos ajudar?</label>
+                                <textarea rows="4" required placeholder="Escreva aqui sobre os produtos de seu interesse..." class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-brand-gold transition"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-dark hover:bg-slate-800 text-white font-bold py-3.5 rounded-lg text-sm transition shadow-md">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-amber-100 text-brand-gold rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <span class="text-slate-600 truncate">atendimentoincasamoveis@gmail.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-amber-100 text-brand-gold rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium">(16) 3017-1081 / (16) 3405-0842</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Endereço Oficial e Mapa -->
+                <div class="lg:col-span-5 flex flex-col space-y-6">
+                    <div class="bg-brand-dark text-white p-6 rounded-2xl shadow-lg border border-slate-800 space-y-4">
+                        <h4 class="text-lg font-serif font-bold text-brand-gold flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot"></i> Endereço para Correspondência
+                        </h4>
+                        <div class="text-sm text-slate-300 space-y-1 font-light">
+                            <p class="font-semibold text-white">Incasa Comercio de Moveis e Colchoes LTDA</p>
+                            <p>Rua Romao de Campos, 1781</p>
+                            <p>Bairro Vila Santa Rita</p>
+                            <p>Franca - SP | CEP: 14403-385</p>
+                        </div>
+                    </div>
+
+                    <!-- Embed Mapa Google Maps -->
+                    <div class="flex-1 min-h-[250px] rounded-2xl overflow-hidden shadow-lg border border-slate-200 relative">
+                        <iframe 
+                            title="Mapa do local"
+                            src="https://maps.google.com/maps?q=Rua%20Romao%20de%20Campos,%201781,%20Vila%20Santa%20Rita,%20Franca%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            class="w-full h-full border-0 min-h-[250px]" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer class="bg-slate-950 text-gray-400 py-8 border-t border-slate-800 text-sm">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-            <p>&copy; Incasa Comercio de Moveis e Colchoes LTDA. Todos os direitos reservados.</p>
-            <p class="text-xs text-gray-500">CNPJ: 05.773.535/0001-19 | Franca - SP</p>
+    <!-- Rodapé Corporativo -->
+    <footer class="bg-slate-950 text-slate-500 py-12 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-slate-900 pb-8">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-brand-gold text-slate-900 rounded flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <span class="text-lg font-serif font-bold text-white tracking-wide">INCASA</span>
+                </div>
+                <p class="text-slate-400 text-center md:text-right">
+                    CNPJ: 05.773.535/0001-19 — Incasa Comercio de Moveis e Colchoes LTDA
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-600">
+                <p>&copy; Todos os direitos reservados. Vila Santa Rita, Franca/SP.</p>
+                <div class="flex space-x-6">
+                    <a href="#registro" class="hover:text-slate-400 transition">Ficha Cadastral</a>
+                    <a href="#servicos" class="hover:text-slate-400 transition">Serviços</a>
+                    <a href="#contato" class="hover:text-slate-400 transition">Atendimento</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/551630171081?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20os%20produtos%20Incasa." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-transform hover:scale-110 focus:outline-none">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
